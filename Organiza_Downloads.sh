@@ -28,12 +28,14 @@
 # ------------------------------- VARIÁVEIS ----------------------------------------- #
 VERDE="\033[32;1m"
 VERMELHO="\033[31;1m"
+USUARIO="luiz"
+LOGFILE="/home/luiz/Labs/Scripts/Organiza-Downloads/organiza_downloads/orgdown.log"
 # ------------------------------------------------------------------------ #
 
 # ------------------------------- TESTES ----------------------------------------- #
 [ $LOGNAME = "root" ] && echo -e " ${VERMELHO}Você está logado como usúario root, logue com o usúario dono da pasta a ser organizada" && exit 1
 
-pwd | [ -d /home/$USER/Downloads ] && cd /home/$USER/Downloads #Está na pasta downloads?
+pwd | [ -d /home/$USUARIO/Downloads ] && cd /home/$USUARIO/Downloads #Está na pasta downloads?
 
 [ ! -d Compactados ] && mkdir Compactados
 [ ! -d Programas-Baixados ] && mkdir Programas-Baixados
@@ -47,19 +49,21 @@ pwd | [ -d /home/$USER/Downloads ] && cd /home/$USER/Downloads #Está na pasta d
 
 # ------------------------------- EXECUÇÃO ----------------------------------------- #
 
-mv -u *.pdf /home/$USER/Downloads/Arquivos-PDF &> /dev/null
-mv -u *.zip /home/$USER/Downloads/Compactados &> /dev/null
-mv -u *.tar.xz /home/$USER/Downloads/Compactados &> /dev/null
-mv -u *.tar.gz /home/$USER/Downloads/Compactados &> /dev/null
-mv -u *.deb /home/$USER/Downloads/Programas-Baixados &> /dev/null
-mv -u *.png /home/$USER/Imagens &> /dev/null
-mv -u *.jpeg /home/$USER/Imagens &> /dev/null
-mv -u *.jpg /home/$USER/Imagens &> /dev/null
+mv -u *.pdf /home/$USUARIO/Downloads/Arquivos-PDF &> /dev/null
+mv -u *.zip /home/$USUARIO/Downloads/Compactados &> /dev/null
+mv -u *.tar.xz /home/$USUARIO/Downloads/Compactados &> /dev/null
+mv -u *.tar.gz /home/$USUARIO/Downloads/Compactados &> /dev/null
+mv -u *.deb /home/$USUARIO/Downloads/Programas-Baixados &> /dev/null
+mv -u *.png /home/$USUARIO/Imagens &> /dev/null
+mv -u *.jpeg /home/$USUARIO/Imagens &> /dev/null
+mv -u *.jpg /home/$USUARIO/Imagens &> /dev/null
+mv -u *.docx /home/$USUARIO/Documentos &> /dev/null
+mv -u *.mp4 /home/$USUARIO/Vídeos &> /dev/null
 
 echo -e ${VERDE} "
 ;                                                                         ;
 ;                       Sua pasta ${VERMELHO}Downloads ${VERDE}está organizada.              ;
-;                                                                         ;"
+;                                                                         ;" >> $LOGFILE
 
 exit 0
 # ------------------------------------------------------------------------ #
